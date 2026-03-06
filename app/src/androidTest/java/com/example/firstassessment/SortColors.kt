@@ -1,0 +1,35 @@
+package com.example.firstassessment
+
+fun sortColors(nums: IntArray) {
+    var low = 0
+    var mid = 0
+    var high = nums.size - 1
+
+    while (mid <= high) {
+        when (nums[mid]) {
+
+            0 -> {
+                val temp = nums[low]
+                nums[low] = nums[mid]
+                nums[mid] = temp
+                low++
+                mid++
+            }
+
+            1 -> mid++
+
+            2 -> {
+                val temp = nums[mid]
+                nums[mid] = nums[high]
+                nums[high] = temp
+                high--
+            }
+        }
+    }
+}
+
+fun main() {
+    val nums = intArrayOf(2, 0, 2, 1, 1, 0)
+    sortColors(nums)
+    println(nums.joinToString())
+}
